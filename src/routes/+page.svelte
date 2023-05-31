@@ -1,6 +1,9 @@
 <script>
 	import "../styles/global.css"
 	let dragover = false
+	let hide = false
+	let fileName = ""
+	let files, input
 </script>
 
 <link
@@ -28,12 +31,15 @@
 				on:dragover={() => {
 					dragover = true
 				}}
-				on:drop={() => {
+				on:dragleave={() => {
 					dragover = false
+				}}
+				on:drop={() => {
+					hide = true
 				}}
 				class:dragover
 			>
-				<div class="dropzone-desc">
+				<div class="dropzone-desc" class:hide>
 					<span class="material-symbols-outlined upload_file_icon">
 						upload_file
 					</span>
@@ -41,17 +47,30 @@
 						>Drag file(s) here to upload.</span
 					>
 					<span class="upload-area-description">
-						Alternatively, you can select a file by <br /><span
-							class="box-in-click">clicking here</span
-						>
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						Alternatively, you can select a file by <br />
+						<span class="box-in-click">clicking here</span>
 					</span>
 				</div>
-				<input type="file" name="file" class="dropzone" />
+				<input
+					type="file"
+					name="file"
+					class="dropzone"
+					bind:files
+					bind:this={input}
+					on:click={() => {
+						hide = true
+					}}
+				/>
+				{#if files?.[0]}
+					<div class="preview">{files[0].name}</div>
+				{/if}
 			</div>
 		</div>
-		<div class="preview" />
 		<div class="modal-footer">
-			<button class="btn-secondary">Cancel</button>
+			<button class="btn-secondary" on:click={() => (input.value = "")}
+				>Cancel</button
+			>
 			<button type="submit" class="btn-primary">Upload File</button>
 		</div>
 	</div>
@@ -202,5 +221,15 @@
 	.dropzone-wrapper.dragover {
 		background: #ecf0f5;
 		border: 2px dashed var(--c-action-primary);
+	}
+	.hide {
+		display: none;
+	}
+	.preview {
+		font-weight: 700;
+		position: relative;
+		top: 45%;
+		left: 45%;
+		color: var(--c-text-primary);
 	}
 </style>
