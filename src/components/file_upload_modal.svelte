@@ -8,54 +8,56 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
 />
 
-<form action="?/upload" method="POST" enctype="multipart/form-data">
-	<div class="modal">
-		<div class="modal-header">
-			<div class="modal-logo">
-				<span class="logo-circle">
-					<span class="material-symbols-outlined"> folder_open </span>
+<div class="modal">
+	<div class="modal-header">
+		<div class="modal-logo">
+			<span class="logo-circle">
+				<span class="material-symbols-outlined"> folder_open </span>
+			</span>
+		</div>
+		<button class="btn-close">
+			<span class="material-symbols-outlined"> close </span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<h2 class="modal-title">Upload a file</h2>
+		<p class="modal-description">Attach the file below</p>
+		<div
+			class="dropzone-wrapper"
+			on:dragover={() => {
+				dragover = true
+			}}
+			on:drop={() => {
+				dragover = false
+			}}
+			class:dragover
+		>
+			<div class="dropzone-desc">
+				<span class="material-symbols-outlined upload_file_icon">
+					upload_file
+				</span>
+				<span class="upload-area-title"
+					>Drag file(s) here to upload.</span
+				>
+				<span class="upload-area-description">
+					Alternatively, you can select a file by <br /><span
+						class="box-in-click">clicking here</span
+					>
 				</span>
 			</div>
-			<button class="btn-close">
-				<span class="material-symbols-outlined"> close </span>
-			</button>
-		</div>
-		<div class="modal-body">
-			<h2 class="modal-title">Upload a file</h2>
-			<p class="modal-description">Attach the file below</p>
-			<div
-				class="dropzone-wrapper"
-				on:dragover={() => {
-					dragover = true
-				}}
-				on:drop={() => {
-					dragover = false
-				}}
-				class:dragover
-			>
-				<div class="dropzone-desc">
-					<span class="material-symbols-outlined upload_file_icon">
-						upload_file
-					</span>
-					<span class="upload-area-title"
-						>Drag file(s) here to upload.</span
-					>
-					<span class="upload-area-description">
-						Alternatively, you can select a file by <br /><span
-							class="box-in-click">clicking here</span
-						>
-					</span>
-				</div>
-				<input type="file" name="file" class="dropzone" />
-			</div>
-		</div>
-		<div class="preview" />
-		<div class="modal-footer">
-			<button class="btn-secondary">Cancel</button>
-			<button type="submit" class="btn-primary">Upload File</button>
+			<input
+				type="file"
+				name="file"
+				class="dropzone"
+				accept="application/pdf"
+			/>
 		</div>
 	</div>
-</form>
+	<div class="modal-footer">
+		<button class="btn-secondary">Cancel</button>
+		<button class="btn-primary">Upload File</button>
+	</div>
+</div>
 
 <style>
 	button {
