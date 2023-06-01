@@ -5,10 +5,6 @@
 	export let values
 </script>
 
-<link
-	rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-/>
 <div class="slider">
 	<div class="sidepanel">
 		<h3>Enteries</h3>
