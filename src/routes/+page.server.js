@@ -1,5 +1,5 @@
 import { writeFile } from "fs/promises"
-import { fail } from "@sveltejs/kit"
+import { error } from "@sveltejs/kit"
 
 export const actions = {
 	upload: async ({ cookies, request, locals }) => {
@@ -11,7 +11,7 @@ export const actions = {
 		// console.log(file.text())
 		// await writeFile(`./files/${file.name}`, file.stream())
 		if (file.name == "undefined") {
-			return fail(400, { message: "File not created" })
+			throw error(400, { message: "File is not valid." })
 		} else {
 			await writeFile(`./files/data.csv`, file.stream())
 		}

@@ -75,8 +75,13 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button class="btn-secondary" on:click={() => (input.value = "")}
-				>Cancel</button
+			<button
+				class="btn-secondary"
+				on:click|preventDefault={() => {
+					input.value = ""
+					files = 0
+					hide = false
+				}}>Cancel</button
 			>
 			<button type="submit" class="btn-primary">Upload File</button>
 		</div>
