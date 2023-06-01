@@ -17,4 +17,6 @@ body{
         color: var(--c-text-primary);
         background-color: var(--c-background-primary);
         line-height: 1.5;
+        margin: 0;
+        padding: 0;
     }

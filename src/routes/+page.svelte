@@ -148,7 +148,7 @@
 
 	.modal-title {
 		font-weight: 700;
-		margin-bottom: 0;
+		margin: 0 auto;
 	}
 
 	.modal-description {
