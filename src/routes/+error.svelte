@@ -2,7 +2,6 @@
 	import "../styles/global.css"
 	import { page } from "$app/stores"
 	import { base } from "$app/paths"
-	// base = "" | `/{ninja-gaming-sveltekit-practice}`
 </script>
 
 <div class="error">

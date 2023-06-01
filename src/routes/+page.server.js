@@ -1,5 +1,7 @@
 import { writeFile } from "fs/promises"
+import { base } from "$app/paths"
 import { error } from "@sveltejs/kit"
+import { redirect } from "@sveltejs/kit"
 
 export const actions = {
 	upload: async ({ cookies, request, locals }) => {
@@ -13,9 +15,9 @@ export const actions = {
 		if (file.name == "undefined") {
 			throw error(400, { message: "File is not valid." })
 		} else {
-			await writeFile(`./files/data.csv`, file.stream())
+			await writeFile(`./src/files/data.csv`, file.stream())
 		}
-
-		return { success: true }
+		// upon successful file creation, redirecting to the dashboard
+		throw redirect(302, "./dashboard")
 	},
 }
