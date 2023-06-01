@@ -56,6 +56,7 @@
 					type="file"
 					name="file"
 					class="dropzone"
+					accept=".csv"
 					bind:files
 					bind:this={input}
 					on:click={() => {
@@ -63,7 +64,13 @@
 					}}
 				/>
 				{#if files?.[0]}
-					<div class="preview">{files[0].name}</div>
+					{#if files[0].name[files[0].name.length - 1] == "v"}
+						<div class="preview">{files[0].name}</div>
+					{:else}
+						<div class="preview error">
+							Please upload a .csv file.
+						</div>
+					{/if}
 				{/if}
 			</div>
 		</div>
@@ -231,5 +238,8 @@
 		top: 45%;
 		left: 45%;
 		color: var(--c-text-primary);
+	}
+	.error {
+		left: 27%;
 	}
 </style>

@@ -8,7 +8,8 @@ export const actions = {
 		const file = data.get("file")
 		// console.log(file.name)
 		// console.log(file.text())
-		await writeFile(`./files/${file.name}`, file.stream())
+		// await writeFile(`./files/${file.name}`, file.stream())
+		await writeFile(`./files/data.csv`, file.stream())
 
 		return { success: true }
 	},
