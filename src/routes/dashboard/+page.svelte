@@ -1,5 +1,6 @@
 <script>
 	import SidePanel from "../../components/SidePanel.svelte"
+	import TextArea from "../../components/text_area.svelte"
 	import { onMount } from "svelte"
 	import * as d3 from "d3"
 	let data, keys
@@ -22,6 +23,7 @@
 	<!-- {#each keys as key}
 		<p>{key}</p>
 	{/each} -->
+	<TextArea />
 {/if}
 
 <style>

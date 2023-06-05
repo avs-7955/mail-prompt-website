@@ -2,7 +2,7 @@
 	import "../styles/global.css"
 	import { Svroller } from "svrollbar"
 	export let keys
-	export let values
+	// export let values
 </script>
 
 <div class="slider">
@@ -13,11 +13,11 @@
 			{#each keys as key, i}
 				<div class="section">
 					<li><span class="section-title">{key}</span></li>
-					<ul>
+					<!-- <ul>
 						{#each values as value}
 							<li class="inner">{value[i]}</li>
 						{/each}
-					</ul>
+					</ul> -->
 				</div>
 			{/each}
 		</Svroller>
@@ -28,7 +28,8 @@
 	.sidepanel {
 		position: fixed;
 		height: 100vh;
-		background-color: var(--c-text-secondary);
+		/* background-color: var(--c-text-secondary); */
+		background-color: var(--c-background-primary);
 		width: 23%;
 		min-width: 100px;
 		margin-left: 0;
@@ -56,7 +57,7 @@
 		left: 100%;
 		background-image: linear-gradient(
 			to left,
-			var(--c-background-primary),
+			#fa9884,
 			rgba(0, 0, 0, 0.3) 10px
 		);
 		z-index: 1;
@@ -67,7 +68,7 @@
 		width: calc(100% - 2em);
 		min-width: 100px;
 		/* padding: 1em; */
-		background-color: var(--c-text-secondary);
+		/* background-color: var(--c-text-secondary); */
 	}
 	/* TITLE */
 	h3 {
@@ -96,8 +97,12 @@
 		display: block;
 		line-height: 1.7;
 		margin: 0;
+		cursor: pointer;
 	}
-	.inner {
+	li:hover {
+		text-decoration: underline;
+	}
+	/* .inner {
 		margin: 0;
 		cursor: pointer;
 		line-height: 1.5;
@@ -108,5 +113,5 @@
 	ul {
 		margin: 0;
 		padding-left: 10px;
-	}
+	} */
 </style>
