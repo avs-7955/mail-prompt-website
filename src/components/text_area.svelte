@@ -1,11 +1,34 @@
 <script>
 	import "../styles/global.css"
+	import { redirect } from "@sveltejs/kit"
+	import { error } from "@sveltejs/kit"
+
 	let text
+
+	async function handleSubmit(event) {
+		let data = {
+			message: text,
+		}
+		console.log(JSON.stringify(data))
+
+		let fetchOptions = {
+			//HTTP method set to POST.
+			method: "POST",
+			mode: "no-cors",
+			body: JSON.stringify(data),
+		}
+		const res = await fetch("http://localhost:3000/dashboard", fetchOptions)
+		// if (!res.ok) {
+		// 	throw error(400, res.text())
+		// }
+		// upon successful file creation, redirecting to the dashboard
+		throw redirect(302, "./dashboard")
+	}
 </script>
 
 <section class="text-area">
 	<!-- <div>I am visible</div> -->
-	<form method="POST">
+	<form method="POST" on:submit|preventDefault={handleSubmit}>
 		<div class="container">
 			<div id="textInput" contenteditable="true" bind:innerText={text} />
 			<button type="submit" class="post-btn">Post</button>
