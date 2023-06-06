@@ -15,7 +15,13 @@ export const actions = {
 		if (file.name == "undefined") {
 			throw error(400, { message: "File is not valid." })
 		} else {
+			// creating the file on the frontend
 			await writeFile(`./src/files/data.csv`, file.stream())
+			// creating the file on the backend server
+			await writeFile(
+				`C:/Users/ayush/Desktop/text-area-input-format/files/new.csv`,
+				file.stream()
+			)
 		}
 		// upon successful file creation, redirecting to the dashboard
 		throw redirect(302, "./dashboard")

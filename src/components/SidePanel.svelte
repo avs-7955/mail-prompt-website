@@ -1,6 +1,8 @@
 <script>
 	import "../styles/global.css"
 	import { Svroller } from "svrollbar"
+	import { createEventDispatcher } from "svelte"
+	const dispatch = createEventDispatcher()
 	export let keys
 	// export let values
 </script>
@@ -12,7 +14,10 @@
 		<Svroller width="100%" height="90vh">
 			{#each keys as key, i}
 				<div class="section">
-					<li><span class="section-title">{key}</span></li>
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<li on:click={() => dispatch("add", { key })}>
+						<span class="section-title">{key}</span>
+					</li>
 					<!-- <ul>
 						{#each values as value}
 							<li class="inner">{value[i]}</li>
@@ -88,7 +93,7 @@
 		display: block;
 		/* padding-bottom: 0.8rem; */
 		font-size: 1rem;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 		letter-spacing: 0.1em;
 		font-weight: 600;
 		padding-bottom: 0;

@@ -5,6 +5,7 @@
 
 	let text
 
+	// Sending the text to the backend for file creation.
 	async function handleSubmit(event) {
 		let data = {
 			message: text,
@@ -21,8 +22,15 @@
 		// if (!res.ok) {
 		// 	throw error(400, res.text())
 		// }
-		// upon successful file creation, redirecting to the dashboard
-		throw redirect(302, "./dashboard")
+		// upon successful file creation,sending an alert message.
+		text = ""
+		alert("The txt files have been created.")
+	}
+
+	// Appending the clicked column header as a template string to the text
+	export const appendText = (key) => {
+		// console.log(text)
+		text = `${text.trim()} {{.${key}}}`
 	}
 </script>
 
@@ -30,7 +38,12 @@
 	<!-- <div>I am visible</div> -->
 	<form method="POST" on:submit|preventDefault={handleSubmit}>
 		<div class="container">
-			<div id="textInput" contenteditable="true" bind:innerText={text} />
+			<div
+				id="textInput"
+				contenteditable="true"
+				bind:innerText={text}
+				spellcheck="true"
+			/>
 			<button type="submit" class="post-btn">Post</button>
 		</div>
 	</form>
