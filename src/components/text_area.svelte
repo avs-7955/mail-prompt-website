@@ -4,6 +4,7 @@
 	import { error } from "@sveltejs/kit"
 
 	let text
+	let placeholder = ` Use {{.Name}} with the column names.`
 
 	// Sending the text to the backend for file creation.
 	async function handleSubmit(event) {
@@ -43,6 +44,7 @@
 				contenteditable="true"
 				bind:innerText={text}
 				spellcheck="true"
+				{placeholder}
 			/>
 			<button type="submit" class="post-btn">Post</button>
 		</div>
@@ -77,6 +79,10 @@
 	}
 	#textInput:focus {
 		box-shadow: 0 0 0 2px #fff 0 0 0 3px #020929;
+	}
+	#textInput[contenteditable="true"]:empty:not(:focus):before {
+		content: attr(placeholder);
+		color: var(--c-text-secondary);
 	}
 	.post-btn {
 		position: relative;
